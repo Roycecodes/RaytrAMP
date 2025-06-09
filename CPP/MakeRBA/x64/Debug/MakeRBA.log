@@ -1,0 +1,5 @@
+﻿  MakeRBA.cpp
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\EntryPoints\MakeRBA.cpp(38,12): error C2039: 'ImportFromUnvTrigMeshFile': is not a member of 'TriangleMesh<Float>'
+      C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\TriangleMesh.hpp(21,7):
+      see declaration of 'TriangleMesh<Float>'
+  

@@ -4,105 +4,124 @@
 #include <vector>
 #include <algorithm>
 #include <fstream>
+#include <string>
+#include <cctype>
 
 #include "TypeDef.hpp"
 #include "BoundBox.hpp"
 #include "BoundSphere.hpp"
 #include "Triangle.hpp"
 #include "UnvTrigMeshFile.hpp"
+#include "ObjTrigMeshFile.hpp"
+
+// Forward-declared mesh-holder from ObjTrigMeshFile.hpp
+// template<class T> struct TriMesh { std::vector<T> vertices; std::vector<uint32_t> indices; };
 
 template< class T >
 class TriangleMesh
 {
 public:
-	U32 trigCount_;
-	std::vector< Triangle< T > > trigArray_;
-	BoundSphere< T > boundSphere_;
-	BoundBox< T > boundBox_;
+    U32                         trigCount_;
+    std::vector< Triangle< T > > trigArray_;
+    BoundSphere< T >            boundSphere_;
+    BoundBox< T >               boundBox_;
 
 public:
-	TriangleMesh()
-	{
+    TriangleMesh()
+        : trigCount_(0)
+    {
+    }
 
-	}
+    explicit TriangleMesh(const U32 reservedTrigCount)
+        : trigCount_(0)
+    {
+        trigArray_.reserve(reservedTrigCount);
+    }
 
-	TriangleMesh( const U32& reservedTrigCount ) :
-		trigCount_( 0 ),
-		trigArray_(),
-		boundSphere_(),
-		boundBox_()
-	{
-		trigArray_.reserve( reservedTrigCount );
-	}
+    void Reset(const U32 reservedTrigCount)
+    {
+        trigCount_ = 0;
+        trigArray_.clear();
+        trigArray_.reserve(reservedTrigCount);
+        boundSphere_ = BoundSphere< T >();
+        boundBox_ = BoundBox< T >();
+    }
 
-	~TriangleMesh()
-	{
+    void CalculateBounds()
+    {
+        if (trigArray_.empty()) return;
+        boundBox_ = trigArray_[0].GetBoundBox();
+        for (const auto& t : trigArray_)
+            boundBox_ = boundBox_.UnionWith(t.GetBoundBox());
 
-	}
+        boundSphere_.center_ = (boundBox_.min_ + boundBox_.max_) * T(0.5);
+        boundSphere_.radius_ = LUV::Length(boundBox_.max_ - boundSphere_.center_);
+    }
 
-	void Reset( const U32& reservedTrigCount )
-	{
-		trigCount_ = 0;
-		trigArray_.clear();
-		trigArray_.reserve( reservedTrigCount );
-		boundSphere_ = BoundSphere< T >();
-		boundBox_ = BoundBox< T >();
-	}
+    void InsertTrig(const Triangle< T >& trig)
+    {
+        trigArray_.push_back(trig);
+        trigCount_ = static_cast<U32>(trigArray_.size());
+    }
 
-	void CalculateBounds()
-	{
-		boundBox_ = trigArray_[0].GetBoundBox();
-		for( const Triangle< T >& trig : trigArray_ )
-		{
-			boundBox_ = boundBox_.UnionWith( trig.GetBoundBox() );
-		}
+    /// Generic import: dispatch by file extension (.unv or .obj)
+    bool ImportFromFile(const std::string& filePath)
+    {
+        // extract lowercase extension (without dot)
+        auto pos = filePath.find_last_of('.');
+        if (pos == std::string::npos) return false;
+        std::string ext = filePath.substr(pos + 1);
+        std::transform(ext.begin(), ext.end(), ext.begin(), ::tolower);
 
-		boundSphere_.center_ = ( boundBox_.min_ + boundBox_.max_ ) / 2;
-		boundSphere_.radius_ = LUV::Length( boundBox_.max_ - boundSphere_.center_ );
-	}
+        // temporary mesh data holder
+        TriMesh<T> meshData;
+        bool loaded = false;
 
-	void InsertTrig( const Triangle< T >& trig )
-	{
-		trigArray_.push_back( trig );
-		trigCount_ = trigArray_.size();
-	}
+        if (ext == "unv") {
+            UnvTrigMeshFile<T> reader;
+            if (!reader.Load(filePath)) return false;
+            // copy raw arrays into meshData
+            meshData.vertices.assign(
+                reader.vertexData_.get(),
+                reader.vertexData_.get() + 3 * reader.vertexCount_);
+            meshData.indices.assign(
+                reader.trigVertexIndex_.get(),
+                reader.trigVertexIndex_.get() + 3 * reader.trigCount_);
+            loaded = true;
+        }
+        else if (ext == "obj") {
+            ObjTrigMeshFile<T> reader;
+            loaded = reader.load(filePath, meshData);
+        }
+        if (!loaded) return false;
 
-	void ImportFromUnvTrigMeshFile( const UnvTrigMeshFile< T >& unvTrigMeshFile )
-	{
-		Reset( unvTrigMeshFile.trigCount_ );
+        // rebuild triangle list
+        const U32 numTrigs = static_cast<U32>(meshData.indices.size() / 3);
+        Reset(numTrigs);
+        for (U32 ti = 0; ti < numTrigs; ++ti) {
+            U32 i0 = meshData.indices[3 * ti + 0] * 3;
+            U32 i1 = meshData.indices[3 * ti + 1] * 3;
+            U32 i2 = meshData.indices[3 * ti + 2] * 3;
 
-		T* vertexPtr = unvTrigMeshFile.vertexData_.get();
-		U32* indexPtr = unvTrigMeshFile.trigVertexIndex_.get();
+            LUV::Vec3<T> v0(
+                meshData.vertices[i0 + 0],
+                meshData.vertices[i0 + 1],
+                meshData.vertices[i0 + 2]);
+            LUV::Vec3<T> v1(
+                meshData.vertices[i1 + 0],
+                meshData.vertices[i1 + 1],
+                meshData.vertices[i1 + 2]);
+            LUV::Vec3<T> v2(
+                meshData.vertices[i2 + 0],
+                meshData.vertices[i2 + 1],
+                meshData.vertices[i2 + 2]);
 
-		for( U32 trigIndex = 0; trigIndex < unvTrigMeshFile.trigCount_; ++trigIndex )
-		{
-			U32 indexV1 = trigIndex * 3;
-			U32 indexV2 = indexV1 + 1;
-			U32 indexV3 = indexV2 + 1;
-
-			U32 indexV1x = indexPtr[ indexV1 ] * 3;
-			U32 indexV1y = indexV1x + 1;
-			U32 indexV1z = indexV1y + 1;
-
-			U32 indexV2x = indexPtr[ indexV2 ] * 3;
-			U32 indexV2y = indexV2x + 1;
-			U32 indexV2z = indexV2y + 1;
-
-			U32 indexV3x = indexPtr[ indexV3 ] * 3;
-			U32 indexV3y = indexV3x + 1;
-			U32 indexV3z = indexV3y + 1;
-
-			LUV::Vec3< T > v1( vertexPtr[ indexV1x ], vertexPtr[ indexV1y ], vertexPtr[ indexV1z ] );
-			LUV::Vec3< T > v2( vertexPtr[ indexV2x ], vertexPtr[ indexV2y ], vertexPtr[ indexV2z ] );
-			LUV::Vec3< T > v3( vertexPtr[ indexV3x ], vertexPtr[ indexV3y ], vertexPtr[ indexV3z ] );
-
-			trigArray_.push_back( Triangle< T >( v1, v2, v3 ) );
-		}
-		
-		trigCount_ = trigArray_.size();
-		CalculateBounds();
-	}	
-
+            trigArray_.emplace_back(v0, v1, v2);
+        }
+        trigCount_ = numTrigs;
+        CalculateBounds();
+        return true;
+    }
 };
 
-#endif
+#endif // TRIANGLE_MESH_INCLUDED
