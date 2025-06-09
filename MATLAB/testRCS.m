@@ -8,8 +8,8 @@ f         = 3e9;            % 3 GHz
 obsCount  = 360;            % one observer per degree
 radius    = 10;             % 10 m circle around the target
 
-unvName   = 'b1blancer630886.unv';  % your mesh in UNV format
-rbaName   = 'b1blancer630886.rba';  % output from MakeRBA
+unvName   = 'ABUSS144.obj';  % your mesh in UNV format
+rbaName   = 'ABUSS144.rba';  % output from MakeRBA
 
 %— STEP 1: GENERATE RBA FROM UNV —%
 RaytrAMP.MakeRBA( unvName, rbaName );

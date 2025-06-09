@@ -1,5 +1,100 @@
 ﻿  MakeRBA.cpp
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\EntryPoints\MakeRBA.cpp(38,12): error C2039: 'ImportFromUnvTrigMeshFile': is not a member of 'TriangleMesh<Float>'
-      C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\TriangleMesh.hpp(21,7):
-      see declaration of 'TriangleMesh<Float>'
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\BvhGenerator.hpp(288,17): warning C4267: 'initializing': conversion from 'size_t' to 'U32', possible loss of data
+  (compiling source file '../SOURCE/EntryPoints/MakeRBA.cpp')
+      C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\BvhGenerator.hpp(288,17):
+      the template instantiation context (the oldest one first) is
+          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\EntryPoints\MakeRBA.cpp(44,25):
+          see reference to class template instantiation 'BvhGenerator<Float>' being compiled
+          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\BvhGenerator.hpp(286,7):
+          while compiling class template member function 'void BvhGenerator<Float>::PopulateReducedBvhArray(ReducedBvhArray<T> &)'
+          with
+          [
+              T=Float
+          ]
+              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\EntryPoints\MakeRBA.cpp(50,39):
+              see the first reference to 'BvhGenerator<Float>::PopulateReducedBvhArray' in 'main'
   
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\BvhGenerator.hpp(249,17): warning C4267: 'initializing': conversion from 'size_t' to 'U32', possible loss of data
+  (compiling source file '../SOURCE/EntryPoints/MakeRBA.cpp')
+      C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\BvhGenerator.hpp(249,17):
+      the template instantiation context (the oldest one first) is
+          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\BvhGenerator.hpp(247,7):
+          while compiling class template member function 'void BvhGenerator<Float>::RemoveEmptyNodes(void)'
+              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\EntryPoints\MakeRBA.cpp(47,32):
+              see the first reference to 'BvhGenerator<Float>::RemoveEmptyNodes' in 'main'
+  
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\BvhGenerator.hpp(193,15): warning C4267: 'initializing': conversion from 'size_t' to 'U32', possible loss of data
+  (compiling source file '../SOURCE/EntryPoints/MakeRBA.cpp')
+      C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\BvhGenerator.hpp(193,15):
+      the template instantiation context (the oldest one first) is
+          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\BvhGenerator.hpp(171,7):
+          while compiling class template member function 'void BvhGenerator<Float>::SqueezeBvhArray(void)'
+              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\EntryPoints\MakeRBA.cpp(46,31):
+              see the first reference to 'BvhGenerator<Float>::SqueezeBvhArray' in 'main'
+  
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\MortonManager.hpp(141,17): warning C4267: 'initializing': conversion from 'size_t' to 'U32', possible loss of data
+  (compiling source file '../SOURCE/EntryPoints/MakeRBA.cpp')
+      C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\MortonManager.hpp(141,17):
+      the template instantiation context (the oldest one first) is
+          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\EntryPoints\MakeRBA.cpp(41,26):
+          see reference to class template instantiation 'MortonManager<Float>' being compiled
+          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\MortonManager.hpp(132,7):
+          while compiling class template member function 'void MortonManager<Float>::GenerateMortonArray(void)'
+              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\EntryPoints\MakeRBA.cpp(42,36):
+              see the first reference to 'MortonManager<Float>::GenerateMortonArray' in 'main'
+  
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Op.hpp(55,11): warning C4244: '*=': conversion from 'const S' to 'T', possible loss of data
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Op.hpp(55,11): warning C4244:         with
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Op.hpp(55,11): warning C4244:         [
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Op.hpp(55,11): warning C4244:             S=float
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Op.hpp(55,11): warning C4244:         ]
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Op.hpp(55,11): warning C4244:         and
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Op.hpp(55,11): warning C4244:         [
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Op.hpp(55,11): warning C4244:             T=U32
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Op.hpp(55,11): warning C4244:         ]
+  (compiling source file '../SOURCE/EntryPoints/MakeRBA.cpp')
+      C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Op.hpp(55,11):
+      the template instantiation context (the oldest one first) is
+          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\MortonManager.hpp(132,7):
+          while compiling class template member function 'void MortonManager<Float>::GenerateMortonArray(void)'
+              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\EntryPoints\MakeRBA.cpp(42,36):
+              see the first reference to 'MortonManager<Float>::GenerateMortonArray' in 'main'
+          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\MortonManager.hpp(146,42):
+          see reference to function template instantiation 'LUV::LuVector<3,U32> LUV::operator *<3,U32,float>(const LUV::LuVector<3,U32> &,const LUV::LuVector<3,float> &) restrict(cpu, amp)' being compiled
+          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Overload.hpp(177,17):
+          see reference to function template instantiation 'LUV::LuVector<3,U32> &LUV::operator *=<3,U32,float>(LUV::LuVector<3,U32> &,const LUV::LuVector<3,float> &) restrict(cpu, amp)' being compiled
+          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Overload.hpp(76,35):
+          see reference to class template instantiation 'LUV::OP_MUL<T,S>' being compiled
+          with
+          [
+              T=U32,
+              S=float
+          ]
+          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Op.hpp(53,15):
+          while compiling class template member function 'void LUV::OP_MUL<T,S>::operator ()(T &,const S &)'
+          with
+          [
+              T=U32,
+              S=float
+          ]
+              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Unroll.hpp(45,12):
+              see the first reference to 'LUV::OP_MUL<T,S>::operator ()' in 'LUV::UNROLL'
+          with
+          [
+              T=U32,
+              S=float
+          ]
+              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Overload.hpp(76,3):
+              see the first reference to 'LUV::UNROLL' in 'LUV::operator *='
+              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Overload.hpp(177,17):
+              see the first reference to 'LUV::operator *=' in 'LUV::operator *'
+              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\MortonManager.hpp(146,42):
+              see the first reference to 'LUV::operator *' in 'MortonManager<Float>::GenerateMortonArray'
+              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\EntryPoints\MakeRBA.cpp(42,36):
+              see the first reference to 'MortonManager<Float>::GenerateMortonArray' in 'main'
+  
+  MakeRBA.obj : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performance
+LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
+  Generating code
+  Finished generating code
+  MakeRBA.vcxproj -> C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\x64\Debug\MakeRBA.exe

@@ -28,14 +28,15 @@ int main( int argc, char *argv[] )
 	}
 	else
 	{
-		std::string unvFilePath = std::string( argv[1] );
+		std::string FilePath = std::string( argv[1] );
 		std::string rbaFilePath = std::string( argv[2] );
 
-		UnvTrigMeshFile< Float > unvTrigMeshFile;
-		unvTrigMeshFile.Load( unvFilePath );
+		//UnvTrigMeshFile< Float > unvTrigMeshFile;
+		//unvTrigMeshFile.Load( unvFilePath );
 
 		TriangleMesh< Float > trigMesh;
-		trigMesh.ImportFromUnvTrigMeshFile( unvTrigMeshFile );
+		std::cout <<"imin the mainframe";
+		trigMesh.ImportFromFile(FilePath);
 
 		MortonManager< Float > mortonManager( &trigMesh );
 		mortonManager.GenerateMortonArray();

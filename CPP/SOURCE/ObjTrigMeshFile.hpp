@@ -1,12 +1,12 @@
 #ifndef OBJ_TRIG_MESH_FILE_INCLUDED
 #define OBJ_TRIG_MESH_FILE_INCLUDED
 
+#include <array>
 #include <fstream>
 #include <string>
 #include <sstream>
 #include <vector>
 #include <cstdint>
-#include <memory>
 #include "TypeDef.hpp"
 
 // Simple triangle-mesh holder
@@ -27,8 +27,9 @@ public:
 // OBJ reader implementation
 template<typename T>
 class ObjTrigMeshFile : public IMeshFileReader<T> {
-public:
+public: 
     bool load(const std::string& path, TriMesh<T>& out) override {
+        std::cout << "trying to load obj" << std::endl;
         std::ifstream in(path);
         if (!in.is_open()) return false;
 
@@ -44,14 +45,11 @@ public:
             if (tag == "v") {
                 T x, y, z;
                 ss >> x >> y >> z;
-                tempVerts.push_back({ x, y, z });
+                tempVerts.push_back(std::array<T, 3>{x, y, z});
             }
             else if (tag == "f") {
-                // only support triangle faces: f i1 i2 i3
-                uint32_t i1, i2, i3;
-                char slash;
-                // handle formats: v, v/vt, v//vn, v/vt/vn
-                auto parseIndex = [&](std::string token) {
+                // only support triangle faces: f i1 i2 i3 (with optional slash formats)
+                auto parseIndex = [&](const std::string& token) {
                     std::istringstream ts(token);
                     uint32_t vi;
                     ts >> vi;
@@ -69,7 +67,7 @@ public:
 
         // flatten vertices
         out.vertices.reserve(tempVerts.size() * 3);
-        for (auto& v : tempVerts) {
+        for (const auto& v : tempVerts) {
             out.vertices.push_back(v[0]);
             out.vertices.push_back(v[1]);
             out.vertices.push_back(v[2]);

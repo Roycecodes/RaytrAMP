@@ -14,8 +14,8 @@
 #include "UnvTrigMeshFile.hpp"
 #include "ObjTrigMeshFile.hpp"
 
-// Forward-declared mesh-holder from ObjTrigMeshFile.hpp
-// template<class T> struct TriMesh { std::vector<T> vertices; std::vector<uint32_t> indices; };
+// Simple flat mesh container (vertices + triangle indices)
+// TriMesh<T> is defined in ObjTrigMeshFile.hpp
 
 template< class T >
 class TriangleMesh
@@ -64,23 +64,22 @@ public:
         trigCount_ = static_cast<U32>(trigArray_.size());
     }
 
-    /// Generic import: dispatch by file extension (.unv or .obj)
+    // Dispatch based on file extension (.unv or .obj)
     bool ImportFromFile(const std::string& filePath)
+
     {
-        // extract lowercase extension (without dot)
+        std::cout << "HELLO THERE" << std::endl;
         auto pos = filePath.find_last_of('.');
         if (pos == std::string::npos) return false;
         std::string ext = filePath.substr(pos + 1);
         std::transform(ext.begin(), ext.end(), ext.begin(), ::tolower);
 
-        // temporary mesh data holder
         TriMesh<T> meshData;
         bool loaded = false;
 
         if (ext == "unv") {
             UnvTrigMeshFile<T> reader;
             if (!reader.Load(filePath)) return false;
-            // copy raw arrays into meshData
             meshData.vertices.assign(
                 reader.vertexData_.get(),
                 reader.vertexData_.get() + 3 * reader.vertexCount_);
@@ -91,11 +90,33 @@ public:
         }
         else if (ext == "obj") {
             ObjTrigMeshFile<T> reader;
+            std::cout << "entered obj" << std::endl;
             loaded = reader.load(filePath, meshData);
         }
         if (!loaded) return false;
 
-        // rebuild triangle list
+        BuildFromTriMesh(meshData);
+        return true;
+    }
+
+    // Overload: import directly from a loaded UNV reader
+   /* bool ImportFromFile(const UnvTrigMeshFile<T>& reader)
+    {
+        std::cout << "entered here" << std::endl;
+        TriMesh<T> meshData;
+        meshData.vertices.assign(
+            reader.vertexData_.get(),
+            reader.vertexData_.get() + 3 * reader.vertexCount_);
+        meshData.indices.assign(
+            reader.trigVertexIndex_.get(),
+            reader.trigVertexIndex_.get() + 3 * reader.trigCount_);
+        BuildFromTriMesh(meshData);
+        return true;
+    }*/
+
+private:
+    void BuildFromTriMesh(const TriMesh<T>& meshData)
+    {
         const U32 numTrigs = static_cast<U32>(meshData.indices.size() / 3);
         Reset(numTrigs);
         for (U32 ti = 0; ti < numTrigs; ++ti) {
@@ -120,7 +141,6 @@ public:
         }
         trigCount_ = numTrigs;
         CalculateBounds();
-        return true;
     }
 };
 
