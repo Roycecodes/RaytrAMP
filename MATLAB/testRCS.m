@@ -8,8 +8,8 @@ f         = 3e9;            % 3 GHz
 obsCount  = 360;            % one observer per degree
 radius    = 10;             % 10 m circle around the target
 
-unvName   = 'ABUSS144.obj';  % your mesh in UNV format
-rbaName   = 'ABUSS144.rba';  % output from MakeRBA
+unvName   = 'dihedral.unv';  % your mesh in UNV format
+rbaName   = 'dihedra.rba';  % output from MakeRBA
 
 %— STEP 1: GENERATE RBA FROM UNV —%
 RaytrAMP.MakeRBA( unvName, rbaName );
@@ -57,3 +57,7 @@ title('Monostatic RCS of ship @3 GHz, θ=0° (side view)')
 ax = gca;
 ax.RAxis.Label.String = 'RCS (dB·m^2)';
 ax.FontSize = 12;
+
+[~, shapeName, ~] = fileparts(unvName);  % Extract 'dihedral' from 'dihedral.unv'
+filename = sprintf('%s_rcs360_3GHz_side.png', shapeName);
+saveas(gcf, filename);
