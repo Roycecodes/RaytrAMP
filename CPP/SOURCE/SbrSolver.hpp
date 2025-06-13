@@ -80,7 +80,7 @@ public:
 
 			ray.dist_ = 0;
 
-			while( isHitAtAll && ray.refCount_ < 3 )
+			while( isHitAtAll && ray.refCount_ < 4 )
 			{
 				isHitAtAll = false;
 

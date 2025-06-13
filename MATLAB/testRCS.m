@@ -8,7 +8,7 @@ f         = 3e9;            % 3 GHz
 obsCount  = 360;            % one observer per degree
 radius    = 10;             % 10 m circle around the target
 
-unvName   = 'dihedral.unv';  % your mesh in UNV format
+unvName   = 'ABD153ZnY.obj';  % your mesh in UNV format
 [~, shapeName, ~] = fileparts(unvName);  % Extract 'dihedral' from 'dihedral.unv'
 rbaName   = [shapeName,'.rba'];  % output from MakeRBA
 
