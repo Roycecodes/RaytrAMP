@@ -1,15 +1,15 @@
 ﻿  MonoRCS.cpp
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(223,22): warning C4244: 'initializing': conversion from 'double' to 'T', possible loss of data
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(223,22): warning C4244:         with
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(223,22): warning C4244:         [
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(223,22): warning C4244:             T=Float
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(223,22): warning C4244:         ]
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(224,22): warning C4244: 'initializing': conversion from 'double' to 'T', possible loss of data
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(224,22): warning C4244:         with
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(224,22): warning C4244:         [
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(224,22): warning C4244:             T=Float
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(224,22): warning C4244:         ]
   (compiling source file '../SOURCE/EntryPoints/MonoRCS.cpp')
-      C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(223,22):
+      C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(224,22):
       the template instantiation context (the oldest one first) is
           C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\EntryPoints\MonoRCS.cpp(46,22):
           see reference to class template instantiation 'SbrSolver<Float>' being compiled
-          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(178,7):
+          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(179,7):
           while compiling class template member function 'void SbrSolver<Float>::PhysicalOpticsIntegral(const RayPool<T> &,const Observation<T> &,T &)'
           with
           [
@@ -20,25 +20,25 @@ C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(223,22): warni
               C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\EntryPoints\MonoRCS.cpp(47,29):
               see the first reference to 'SbrSolver<Float>::MonostaticRcsGpu' in 'main'
   
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(231,46): warning C4244: 'argument': conversion from 'double' to 'const std::complex<float>::_Ty', possible loss of data
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(232,46): warning C4244: 'argument': conversion from 'double' to 'const std::complex<float>::_Ty', possible loss of data
   (compiling source file '../SOURCE/EntryPoints/MonoRCS.cpp')
   
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(242,18): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(242,18): warning C4244:         with
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(242,18): warning C4244:         [
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(242,18): warning C4244:             T=Float
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(242,18): warning C4244:         ]
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(243,18): warning C4244: '=': conversion from 'double' to 'T', possible loss of data
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(243,18): warning C4244:         with
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(243,18): warning C4244:         [
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(243,18): warning C4244:             T=Float
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(243,18): warning C4244:         ]
   (compiling source file '../SOURCE/EntryPoints/MonoRCS.cpp')
   
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(90,18): warning C4305: 'initializing': truncation from 'double' to 'T'
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(90,18): warning C4305:         with
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(90,18): warning C4305:         [
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(90,18): warning C4305:             T=Float
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(90,18): warning C4305:         ]
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(91,18): warning C4305: 'initializing': truncation from 'double' to 'T'
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(91,18): warning C4305:         with
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(91,18): warning C4305:         [
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(91,18): warning C4305:             T=Float
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(91,18): warning C4305:         ]
   (compiling source file '../SOURCE/EntryPoints/MonoRCS.cpp')
-      C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(90,18):
+      C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(91,18):
       the template instantiation context (the oldest one first) is
-          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(65,7):
+          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(66,7):
           while compiling class template member function 'void SbrSolver<Float>::ShootAndBounceRaysGpu(const ReducedBvhArray<Float> &,RayPool<T> &)'
           with
           [
@@ -49,15 +49,15 @@ C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(90,18): warnin
               C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\EntryPoints\MonoRCS.cpp(47,29):
               see the first reference to 'SbrSolver<Float>::MonostaticRcsGpu' in 'main'
   
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(252,22): warning C4305: 'initializing': truncation from 'double' to 'T'
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(252,22): warning C4305:         with
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(252,22): warning C4305:         [
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(252,22): warning C4305:             T=Float
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(252,22): warning C4305:         ]
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(253,22): warning C4305: 'initializing': truncation from 'double' to 'T'
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(253,22): warning C4305:         with
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(253,22): warning C4305:         [
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(253,22): warning C4305:             T=Float
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(253,22): warning C4305:         ]
   (compiling source file '../SOURCE/EntryPoints/MonoRCS.cpp')
-      C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(252,22):
+      C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(253,22):
       the template instantiation context (the oldest one first) is
-          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(178,7):
+          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(179,7):
           while compiling class template member function 'void SbrSolver<Float>::PhysicalOpticsIntegral(const RayPool<T> &,const Observation<T> &,T &)'
           with
           [
@@ -67,22 +67,22 @@ C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(252,22): warni
               see the first reference to 'SbrSolver<Float>::PhysicalOpticsIntegral' in 'SbrSolver<Float>::MonostaticRcsGpu'
               C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\EntryPoints\MonoRCS.cpp(47,29):
               see the first reference to 'SbrSolver<Float>::MonostaticRcsGpu' in 'main'
-          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(252,24):
+          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(253,24):
           while compiling class template static data member 'T SbrSolver<T>::c0'
           with
           [
               T=Float
           ]
   
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(264,22): warning C4305: 'initializing': truncation from 'double' to 'T'
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(264,22): warning C4305:         with
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(264,22): warning C4305:         [
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(264,22): warning C4305:             T=Float
-C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(264,22): warning C4305:         ]
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(265,22): warning C4305: 'initializing': truncation from 'double' to 'T'
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(265,22): warning C4305:         with
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(265,22): warning C4305:         [
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(265,22): warning C4305:             T=Float
+C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(265,22): warning C4305:         ]
   (compiling source file '../SOURCE/EntryPoints/MonoRCS.cpp')
-      C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(264,22):
+      C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(265,22):
       the template instantiation context (the oldest one first) is
-          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(264,24):
+          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(265,24):
           while compiling class template static data member 'T SbrSolver<T>::pi'
           with
           [
@@ -127,7 +127,7 @@ C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\BoundBox.hpp(43,37): warning
           [
               T=Float
           ]
-              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(58,19):
+              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(59,19):
               see the first reference to 'BoundBox<T>::GetRadius' in 'SbrSolver<Float>::PopulateRayPool'
           with
           [
@@ -146,7 +146,7 @@ C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\RayTube.hpp(125,17): warning
   (compiling source file '../SOURCE/EntryPoints/MonoRCS.cpp')
       C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\RayTube.hpp(125,17):
       the template instantiation context (the oldest one first) is
-          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(219,8):
+          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(220,8):
           see reference to class template instantiation 'RayTube<T>' being compiled
           with
           [
@@ -158,8 +158,8 @@ C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\RayTube.hpp(125,17): warning
           [
               T=Float
           ]
-              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(113,35):
-              see the first reference to 'RayTube<T>::CollisionWithTriangleSbr' in 'SbrSolver<Float>::ShootAndBounceRaysGpu::<lambda_e2463f48b183c5a044e7041771dd7b6d>::operator ()'
+              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(114,35):
+              see the first reference to 'RayTube<T>::CollisionWithTriangleSbr' in 'SbrSolver<Float>::ShootAndBounceRaysGpu::<lambda_39f150b2b039538ed46d7ddbefde7350>::operator ()'
           with
           [
               T=Float
@@ -196,7 +196,7 @@ C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\RayPool.hpp(87,21): warning 
           [
               T=Float
           ]
-              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(62,25):
+              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(63,25):
               see the first reference to 'RayPool<T>::ReGenerateRays' in 'SbrSolver<Float>::PopulateRayPool'
           with
           [
@@ -226,7 +226,7 @@ C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Op.hpp(55,
   (compiling source file '../SOURCE/EntryPoints/MonoRCS.cpp')
       C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Op.hpp(55,11):
       the template instantiation context (the oldest one first) is
-          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(65,7):
+          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(66,7):
           while compiling class template member function 'void SbrSolver<Float>::ShootAndBounceRaysGpu(const ReducedBvhArray<Float> &,RayPool<T> &)'
           with
           [
@@ -236,7 +236,7 @@ C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Op.hpp(55,
               see the first reference to 'SbrSolver<Float>::ShootAndBounceRaysGpu' in 'SbrSolver<Float>::MonostaticRcsGpu'
               C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\EntryPoints\MonoRCS.cpp(47,29):
               see the first reference to 'SbrSolver<Float>::MonostaticRcsGpu' in 'main'
-          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(135,62):
+          C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(136,62):
           see reference to function template instantiation 'LUV::LuVector<3,float> LUV::operator *<3,float,double>(const LUV::LuVector<3,float> &,const S &) restrict(cpu, amp)' being compiled
           with
           [
@@ -273,7 +273,7 @@ C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Op.hpp(55,
               see the first reference to 'LUV::UNROLL' in 'LUV::operator *='
               C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Overload.hpp(127,17):
               see the first reference to 'LUV::operator *=' in 'LUV::operator *'
-              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(135,62):
+              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(136,62):
               see the first reference to 'LUV::operator *' in 'SbrSolver<Float>::ShootAndBounceRaysGpu'
               C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(49,25):
               see the first reference to 'SbrSolver<Float>::ShootAndBounceRaysGpu' in 'SbrSolver<Float>::MonostaticRcsGpu'
@@ -298,7 +298,7 @@ C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Op.hpp(64,
           [
               T=Float
           ]
-              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(62,25):
+              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(63,25):
               see the first reference to 'RayPool<T>::ReGenerateRays' in 'SbrSolver<Float>::PopulateRayPool'
           with
           [
@@ -351,7 +351,7 @@ C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\LuVector\LuVector_Op.hpp(64,
           [
               T=Float
           ]
-              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(62,25):
+              C:\Users\royce\Desktop\DSTAwerk\RaytrAMP\CPP\SOURCE\SbrSolver.hpp(63,25):
               see the first reference to 'RayPool<T>::ReGenerateRays' in 'SbrSolver<Float>::PopulateRayPool'
           with
           [

@@ -48,6 +48,7 @@ public:
 			PopulateRayPool( bvhArray, obsPtr[ idx ], rayPool );
 			ShootAndBounceRaysGpu( bvhArray, rayPool );
 			PhysicalOpticsIntegral( rayPool, obsPtr[ idx ], rcsPtr[ idx ] );
+			std::cout << idx << " / " << obsCount << std::endl;
 		}
 	}
 
@@ -79,7 +80,7 @@ public:
 
 			ray.dist_ = 0;
 
-			while( isHitAtAll && ray.refCount_ < 10 )
+			while( isHitAtAll && ray.refCount_ < 3 )
 			{
 				isHitAtAll = false;
 
