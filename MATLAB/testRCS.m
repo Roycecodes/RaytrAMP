@@ -1,6 +1,3 @@
-%clc;
-clear all;
-%close all;
 
 %— PARAMETERS —%
 c0        = 299792458;      % speed of light (m/s)
@@ -8,7 +5,7 @@ f         = 3e9;            % 3 GHz
 obsCount  = 360;            % one observer per degree
 radius    = 10;             % 10 m circle around the target
 
-unvName   = 'ABD153ZnY.obj';  % your mesh in UNV format
+unvName   = 'dihedral.unv';  % your mesh in UNV format
 [~, shapeName, ~] = fileparts(unvName);  % Extract 'dihedral' from 'dihedral.unv'
 rbaName   = [shapeName,'.rba'];  % output from MakeRBA
 
