@@ -5,7 +5,7 @@ f         = 3e9;            % 3 GHz
 obsCount  = 360;            % one observer per degree
 radius    = 10;             % 10 m circle around the target
 
-unvName   = 'dihedral.unv';  % your mesh in UNV format
+unvName   = 'sphere1r12.unv';  % your mesh in UNV format
 [~, shapeName, ~] = fileparts(unvName);  % Extract 'dihedral' from 'dihedral.unv'
 rbaName   = [shapeName,'.rba'];  % output from MakeRBA
 
@@ -27,7 +27,7 @@ polZ = ones (size(azRad));
 
 % same freq + density
 freq      = repmat(f,       obsCount, 1);
-rayPerLam = repmat(2,      obsCount, 1);
+rayPerLam = repmat(8,      obsCount, 1);
 
 %— WRITE .obs, RUN & LOAD —%
 RaytrAMP.GenerateObsFile( ...
