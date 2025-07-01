@@ -135,7 +135,7 @@ public:
 				) );
 
 				// BE CAREFUL, PUSH BACK MAY RELOCATE THE MEMORY, UPDATE THE POINTER
-				BvhNode< T >* node = &(bvhNodeArray_[ nodeIdx ]);
+				node = &(bvhNodeArray_[ nodeIdx ]);
 
 				bvhNodeArray_.push_back( BvhNode< T >(
 					midMortonRange + 1,
@@ -146,7 +146,7 @@ public:
 					node->leftChildIdx_,
 					EMPTY
 				) );
-
+				node = &(bvhNodeArray_[nodeIdx]);
 				
 
 			}
