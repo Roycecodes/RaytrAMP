@@ -10,6 +10,8 @@ import time
 BASE_DIR = os.getcwd()
 MESH_FOLDER = os.path.join(BASE_DIR, 'DataFiles', 'Unv')   # contains .unv and .obj meshes
 OBS_FOLDER  = os.path.join(BASE_DIR, 'DataFiles', 'Obs')   # output .obs files
+RBA_FOLDER = os.path.join(BASE_DIR, 'DataFiles', 'Rba')
+RCS_FOLDER = os.path.join(BASE_DIR, 'DataFiles', 'Rcs')
 EXE_FOLDER  = os.path.join(BASE_DIR, 'Executables')        # .exe files for RaytrAMP
 
 # Ensure the observer output folder exists
@@ -129,43 +131,63 @@ def plot_rcs(angles_deg, rcs_vals, title, out_png):
     """Generate a polar plot of RCS (dB) vs. angle and save to PNG."""
     theta = np.deg2rad(angles_deg)
     r_dB  = 10 * np.log10(rcs_vals)
-    
+
     fig = plt.figure(figsize=(6,6))
     ax  = fig.add_subplot(111, projection='polar')
-    ax.set_theta_zero_location("N")   
     ax.plot(theta, r_dB, linewidth=1.5)
     ax.set_thetagrids(np.arange(0,360,45))
+    ax.set_theta_zero_location("N")   
     ax.set_rmin(r_dB.min()-5)
     ax.set_rmax(r_dB.max()+5)
     ax.set_title(title, va='bottom')
     ax.set_ylabel('RCS (dB·m²)', labelpad=15)
-    
     ax.grid(True)
     plt.tight_layout()
     plt.savefig("batchedplots/"+ out_png, dpi=300)
     print(f"Saved: {out_png}")
 
+def batched_run(batch_inputs,
+                obs_count = 360,
+                az_range= (0,360),
+                el_range = (0,0),
+                radius=10,
+                pol=(0,0,1),
+                freq=3e9):
+    PLOT_FOLDER = os.path.join(BASE_DIR, 'batchedplots')
+    os.makedirs(PLOT_FOLDER,exist_ok=True)
+    for model_name,rpl in batch_inputs:
+        print(f"\n=== Processing {model_name} with RPL={rpl} ===")
 
-def main():
-    start_time = time.time()
-    mesh_file, obs_count, az_range, el_range, radius, pol, freq, rpl = get_user_inputs()
+       
+        mesh_path = os.path.join (MESH_FOLDER,model_name)
+        if not os.path.exists(mesh_path):
+            print("cannot find mesh_path")
+            continue
+        shape,_ = os.path.splitext(model_name)
+        rba_path = os.path.join(RBA_FOLDER,f"{shape}.rba")
+        obs_file = f"{shape}_{obs_count}obs.obs"
+        rcs_path = os.path.join(RCS_FOLDER,f"{shape}.rcs")
 
-    mesh_path = os.path.join(MESH_FOLDER, mesh_file)
-    shape, _ = os.path.splitext(mesh_file)
-    rba_path = f"DataFiles/rba/{shape}.rba"
-    obs_file = f"{shape}_{obs_count}obs.obs"
-    rcs_file = f"DataFiles/rcs/{shape}.rcs"
-    
+        try:
+            start_time = time.time()
+            make_rba(mesh_path, rba_path)
+            angles = generate_obs_file(obs_file, obs_count, az_range, el_range, radius, pol, freq, rpl)
+            run_monorcs(rba_path, os.path.join(OBS_FOLDER, obs_file), rcs_path)
+            rcs_vals = load_rcs(rcs_path)
+            elapsed = time.time() - start_time
+            elapsed_str = f"{elapsed:.2f}s"
 
-    make_rba(mesh_path, rba_path)
-    angles = generate_obs_file(obs_file, obs_count, az_range, el_range, radius, pol, freq, rpl)
-    run_monorcs(rba_path, os.path.join(OBS_FOLDER, obs_file), rcs_file)
-    rcs_vals = load_rcs(rcs_file)
-    title = f"Monostatic RCS of {shape} @{freq/1e9:.1f} GHz"
-    elapsed = time.time() - start_time
-    elapsed_str = f"{elapsed:.2f}s"
-    png_file = f"{shape}_{rpl}rpl_{elapsed_str}Taken.png"
-    plot_rcs(angles, rcs_vals, title, png_file)
+            title = f"Monostatic RCS of {shape} @{freq/1e9:.1f} GHz"
+            png_file = f"{shape}_{rpl}rpl_{elapsed_str}tt.png"
+         
+            plot_rcs(angles,rcs_vals,title,png_file)
+        except Exception as e:
+            print(f"error prosessing {model_name} : {e}")
+
+
 
 if __name__ == '__main__':
-    main()
+    batched_list=[
+    ('F16.obj',3)
+    ]
+    batched_run(batched_list)

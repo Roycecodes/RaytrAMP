@@ -1,11 +1,15 @@
-
+%clc;
+clear all;
+%close all;
+tic
 %— PARAMETERS —%
 c0        = 299792458;      % speed of light (m/s)
 f         = 3e9;            % 3 GHz
 obsCount  = 360;            % one observer per degree
-radius    = 10;             % 10 m circle around the target
+radius    = 100;             % 10 m circle around the target
+rpl = 3;
 
-unvName   = 'sphere1r12.unv';  % your mesh in UNV format
+unvName   = 'DDG82.obj';  % your mesh in UNV format
 [~, shapeName, ~] = fileparts(unvName);  % Extract 'dihedral' from 'dihedral.unv'
 rbaName   = [shapeName,'.rba'];  % output from MakeRBA
 
@@ -27,7 +31,7 @@ polZ = ones (size(azRad));
 
 % same freq + density
 freq      = repmat(f,       obsCount, 1);
-rayPerLam = repmat(8,      obsCount, 1);
+rayPerLam = repmat(rpl,      obsCount, 1);
 
 %— WRITE .obs, RUN & LOAD —%
 RaytrAMP.GenerateObsFile( ...
@@ -41,7 +45,7 @@ RaytrAMP.GenerateObsFile( ...
 RaytrAMP.MonoRCS( ...
     rbaName, ...
     'obs360_3GHz_side.obs', ...
-    [shapeName,'.rcs'] ...
+    [shapeName,'.rcs']...
 );
 
 [~, rcsValues] = RaytrAMP.LoadRcsFile([shapeName,'.rcs']);
@@ -49,7 +53,6 @@ RaytrAMP.MonoRCS( ...
 %— POLAR PLOT IN dB —%
 thetaPlot = deg2rad(azDeg);
 r_dB      = 10*log10(rcsValues);
-
 polarplot(thetaPlot, r_dB, 'LineWidth',1.5)
 rlim([min(r_dB)-5, max(r_dB)+5])
 thetaticks(0:45:315)
@@ -58,7 +61,8 @@ title(['Monostatic RCS of ', shapeName , ' @3 GHz, θ=0° (side view)'])
 ax = gca;
 ax.RAxis.Label.String = 'RCS (dB·m^2)';
 ax.FontSize = 12;
-
-
-filename = sprintf('%s_rcs360_3GHz_side.png', shapeName);
+ax.ThetaZeroLocation = 'top';
+elapsedTime = toc
+filename = sprintf('%s_rpl%d_b%d_tt%.2fsec.png', shapeName,rpl,3,elapsedTime);
 saveas(gcf, filename);
+
