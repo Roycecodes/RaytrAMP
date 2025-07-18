@@ -76,3 +76,98 @@ RaytrAMP Execution Time: 30 minutes
 FEKO Execution Time: It takes 2 minutes to finish 1% of 1 direction. So it would require 9 months to finish. Not included for this reason. (~10000x slower)  
 
 <img src="img/lancer.png">  
+
+
+# RaytrAMP
+
+A Windows-based GPU ray tracing framework for radar signature simulation using compiled C++ AMP and MATLAB.
+
+---
+
+## 1. Dependencies
+
+### Hardware
+- A GPU (NVIDIA recommended for compatibility with C++ AMP)
+
+### Software
+- Visual Studio 2022 (required for building)
+- Microsoft C++ Compiler (MSVC)
+- MATLAB
+
+---
+
+## 2. Setup Instructions
+
+### To Build or Modify Code
+
+1. **Install Visual Studio 2022**
+   - During installation, select **"Desktop development with C++"**
+   - Include **Windows 11 SDK** (e.g., version `10.0.22621.0`)
+
+2. **Open Solution File**
+   - Open the solution `RaytrAMP-Master.sln` in Visual Studio
+
+3. **Update Project Settings**
+   - Go to `Project > Properties`
+     - Under **General**, set **Windows SDK Version** to match your installed version (e.g., `10.0.22621.0`)
+     - Go to **C/C++ > Preprocessor** and add:
+       ```
+       _SILENCE_AMP_DEPRECATION_WARNINGS
+       ```
+     - Go to **C/C++ > General > Debug Information Format** and set to `None` or `Z7`
+     - For the `MakeRBA` project:
+       - Go to **C/C++ > Code Generation > Basic Runtime Checks** and set to `None` or `Default`
+
+4. **Reload and Build**
+   - Right-click the solution in Solution Explorer → **Reload Project with Dependencies**
+   - Press `Ctrl+Shift+B` to build
+
+5. **Deploy the Executables**
+   - Built `.exe` files are found in `CPP/debug/` folder
+   - Copy them into the `Executables/` folder inside your MATLAB root project
+
+---
+
+## 3. How to Use
+
+### Single Simulation (`runRCS.py`)
+- Prompts for mesh file and settings
+- Generates `.obs` observer file
+- Runs `MakeRBA.exe` and `MonoRCS.exe`
+- Outputs a polar RCS plot in `batchedplots/`
+
+### Batch Simulation (`runBatch.py`)
+- Modify the `batched_list` with desired models and ray counts
+- Automates processing of multiple objects
+- Saves output plots for each model
+
+```python
+batched_list = [
+  ('F16.obj', 3)
+]
+```
+
+### Convert to CSV (`convert_to_csv.py`)
+- Converts `.rcs` binary files into `.csv` with (phi, dB) format
+- Output saved to `DataFiles/csv/`
+
+---
+
+## File Structure
+
+```
+RaytrAMP/
+├── Executables/       # Place compiled .exe files here
+├── DataFiles/
+│   ├── Unv/           # Input .unv and .obj geometry files
+│   ├── Rba/           # Generated .rba files
+│   ├── Obs/           # .obs observer files
+│   ├── Rcs/           # Output binary .rcs files
+│   └── Csv/           # (Optional) Converted .csv files
+├── batchedplots/      # Output polar plots from batch/single runs
+├── runRCS.py
+├── runBatch.py
+└── convert_to_csv.py
+```
+
+
